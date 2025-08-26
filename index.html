@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: De Weg naar Hybride Zorg</title>
+    <!-- Laad Tailwind CSS voor de styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Laad Chart.js voor de grafieken -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Laad een Google Font voor een professionele uitstraling -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Definieer de container voor de grafieken, zodat ze responsive zijn */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+                max-height: 400px;
+            }
+        }
+        /* CSS voor de laadspinner */
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12 md:mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#003B73] mb-4">De Weg naar Hybride Zorg</h1>
+            <p class="text-lg md:text-xl text-[#0074B7] max-w-3xl mx-auto">Een visuele gids voor de succesvolle implementatie van digitale consulten, gericht op ons doel: 25% hybride zorg in 2026.</p>
+        </header>
+
+        <main class="space-y-12 md:space-y-20">
+
+            <section id="kpis" class="flex justify-center items-center">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl font-bold text-[#003B73] mb-4 text-center">Voortgang naar 2026 Doelstelling</h2>
+                    <div class="chart-container h-64 md:h-80">
+                        <canvas id="progressChart"></canvas>
+                    </div>
+                    <p class="text-center mt-4 text-gray-600">We meten onze voortgang in het aandeel digitale consulten. Het doel is een gestage groei naar 25% van het totaal aantal contactmomenten.</p>
+                </div>
+            </section>
+            
+            <section id="stap1" class="bg-white rounded-lg shadow-md p-6 md:p-8">
+                <div class="text-center mb-8">
+                    <span class="text-sm font-semibold bg-[#BFD7ED] text-[#003B73] py-1 px-3 rounded-full">Stap 1</span>
+                    <h2 class="text-3xl font-bold text-[#003B73] mt-2">De Voorbereiding: Fundament voor Succes</h2>
+                    <p class="mt-2 text-gray-600 max-w-2xl mx-auto">Een vlekkeloos consult begint met een solide voorbereiding. Deze drie elementen zijn cruciaal.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="border-t-4 border-[#0074B7] pt-4">
+                        <h3 class="text-xl font-semibold text-[#003B73] mb-2">Techniek & Tools</h3>
+                        <p class="text-gray-600">Controleer apparatuur, verbinding en software. Een snelle tech-check voorkomt 90% van de problemen.</p>
+                    </div>
+                    <div class="border-t-4 border-[#60A3D9] pt-4">
+                        <h3 class="text-xl font-semibold text-[#003B73] mb-2">Professionele Werkruimte</h3>
+                        <p class="text-gray-600">Een rustige, private en goed verlichte omgeving waarborgt de vertrouwelijkheid en professionaliteit.</p>
+                    </div>
+                    <div class="border-t-4 border-[#BFD7ED] pt-4">
+                        <h3 class="text-xl font-semibold text-[#003B73] mb-2">Cliënt Voorbereiden</h3>
+                        <p class="text-gray-600">Informeer de cliënt, check of de techniek voor hen duidelijk is en bied proactief hulp aan.</p>
+                    </div>
+                </div>
+                <div class="text-center mt-6">
+                    <a href="#handleiding-stap1" class="text-[#0074B7] font-bold hover:underline transition-colors">
+                        Lees de volledige handleiding voor deze stap &#x2192;
+                    </a>
+                </div>
+            </section>
+            
+            <section id="stap2" class="bg-white rounded-lg shadow-md p-6 md:p-8">
+                <div class="text-center mb-8">
+                     <span class="text-sm font-semibold bg-[#BFD7ED] text-[#003B73] py-1 px-3 rounded-full">Stap 2</span>
+                    <h2 class="text-3xl font-bold text-[#003B73] mt-2">Het Digitale Consult: De Kern van de Interactie</h2>
+                    <p class="mt-2 text-gray-600 max-w-2xl mx-auto">Het proces van het digitale consult zelf, opgedeeld in een logische flow voor een gestructureerd en effectief gesprek.</p>
+                </div>
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                     <div class="bg-gray-50 rounded-lg p-6">
+                        <h3 class="text-xl font-bold text-[#003B73] mb-4 text-center">Focus op Communicatie</h3>
+                        <p class="text-gray-600 mb-4">Tijdens een digitaal consult verschuift de focus. Non-verbale signalen vragen meer aandacht, en heldere, rustige spraak is essentieel. Oogcontact via de camera creëert een gevoel van verbinding.</p>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-center"><span class="text-[#0074B7] mr-2">&#10003;</span> Kijk in de camera voor oogcontact.</li>
+                            <li class="flex items-center"><span class="text-[#0074B7] mr-2">&#10003;</span> Spreek rustig en articuleer duidelijk.</li>
+                            <li class="flex items-center"><span class="text-[#0074B7] mr-2">&#10003;</span> Vraag actief door bij onduidelijke signalen.</li>
+                            <li class="flex items-center"><span class="text-[#0074B7] mr-2">&#10003;</span> Gebruik pauzes om de cliënt ruimte te geven.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <h3 class="text-2xl font-bold text-[#003B73] mb-4 text-center">Vraag feedback na het consult</h3>
+                        <p class="text-center mb-4 text-gray-600">Na elk consult is het belangrijk om de cliënt te vragen naar hun ervaring. De belangrijkste aandachtspunten zijn:</p>
+                         <ul class="list-none space-y-2 text-gray-700 mt-4">
+                            <li class="flex items-center"><span class="text-[#0074B7] mr-2">&#10003;</span> Technisch Gemak</li>
+                            <li class="flex items-center"><span class="text-[#0074B7] mr-2">&#10003;</span> Gevoel van Verbinding</li>
+                            <li class="flex items-center"><span class="text-[#0074B7] mr-2">&#10003;</span> Effectiviteit van het Gesprek</li>
+                            <li class="flex items-center"><span class="text-[#0074B7] mr-2">&#10003;</span> Gebruiksvriendelijkheid Tool</li>
+                            <li class="flex items-center"><span class="text-[#0074B7] mr-2">&#10003;</span> Tijdsbesparing</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-6">
+                    <a href="#handleiding-stap2" class="text-[#0074B7] font-bold hover:underline transition-colors">
+                        Lees de volledige handleiding voor deze stap &#x2192;
+                    </a>
+                </div>
+            </section>
+
+            <section id="gemini-feature" class="bg-white rounded-lg shadow-md p-6 md:p-8 space-y-4">
+                <div class="text-center">
+                     <span class="text-sm font-semibold bg-[#BFD7ED] text-[#003B73] py-1 px-3 rounded-full">✨ Nieuw Hulpmiddel</span>
+                    <h2 class="text-3xl font-bold text-[#003B73] mt-2">Digitale Communicatie Assistent</h2>
+                    <p class="mt-2 text-gray-600 max-w-2xl mx-auto">Onze assistent is al getraind als communicatie-expert. Beschrijf direct je uitdaging en ontvang een praktisch script of advies.</p>
+                </div>
+                <div class="flex flex-col space-y-4">
+                    <textarea id="challenge-input" class="w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#60A3D9]" rows="4" placeholder="Beschrijf direct je uitdaging, bijvoorbeeld: 'Hoe begin ik een gesprek met een cliënt die digitaal onzeker is?'"></textarea>
+                    <button id="generate-script-btn" class="w-full md:w-auto px-6 py-3 rounded-lg text-white font-bold bg-[#0074B7] hover:bg-[#003B73] transition-colors">
+                        Genereer Communicatiescript ✨
+                    </button>
+                    <div id="loading-spinner" class="hidden text-center">
+                        <div class="animate-spin h-8 w-8 border-4 border-[#BFD7ED] border-t-[#0074B7] rounded-full mx-auto"></div>
+                        <p class="text-gray-500 mt-2">Aan het genereren...</p>
+                    </div>
+                    <div id="script-output" class="bg-gray-100 p-4 rounded-lg whitespace-pre-wrap text-gray-800">
+                        <!-- Output will be displayed here -->
+                    </div>
+                </div>
+            </section>
+            
+            <section id="stap3" class="bg-white rounded-lg shadow-md p-6 md:p-8">
+                <div class="text-center mb-8">
+                     <span class="text-sm font-semibold bg-[#BFD7ED] text-[#003B73] py-1 px-3 rounded-full">Stap 3</span>
+                    <h2 class="text-3xl font-bold text-[#003B73] mt-2">Na het Consult: Borging en Leren</h2>
+                    <p class="mt-2 text-gray-600 max-w-2xl mx-auto">De zorg stopt niet na het gesprek. De nazorgfase is cruciaal voor kwaliteitsborging en continue verbetering.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="p-6 bg-gray-50 rounded-lg">
+                        <h3 class="text-xl font-semibold text-[#003B73] mb-2">Documenteren</h3>
+                        <p class="text-gray-600">Registreer het consult direct en correct in het ECD, met de vermelding 'digitaal contact'.</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-lg">
+                        <h3 class="text-xl font-semibold text-[#003B73] mb-2">Evalueren</h3>
+                        <p class="text-gray-600">Reflecteer kort op het gesprek. Wat ging er goed? Wat kan er beter? Schrijf deze reflectie eventueel op.</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-lg">
+                        <h3 class="text-xl font-semibold text-[#003B73] mb-2">Delen</h3>
+                        <p class="text-gray-600">Deel je ervaringen en geleerde lessen met collega's. Samen bouwen we aan expertise.</p>
+                    </div>
+                </div>
+                <div class="text-center mt-6">
+                    <a href="#handleiding-stap3" class="text-[#0074B7] font-bold hover:underline transition-colors">
+                        Lees de volledige handleiding voor deze stap &#x2192;
+                    </a>
+                </div>
+            </section>
+
+            <section id="tips-hulpmiddelen" class="bg-white rounded-lg shadow-md p-6 md:p-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-[#003B73] mt-2">Handige Tips en Hulpmiddelen</h2>
+                    <p class="mt-2 text-gray-600 max-w-2xl mx-auto">Hier vind je een overzicht van de tools en platforms die je kunt gebruiken bij hybride zorg.</p>
+                </div>
+                <ul class="list-none space-y-2 text-gray-600 mt-8">
+                    <li class="font-bold text-[#003B73] text-xl">Videobelplatforms:</li>
+                    <ul class="list-disc ml-6 space-y-1">
+                        <li>**Google Meet / Microsoft Teams:** Veelzijdig en breed beschikbaar.</li>
+                        <li>**Jitsi Meet:** Open-source, geen account nodig, laagdrempelig.</li>
+                        <li>**WhatsApp Videobellen:** Vertrouwd en intuïtief, maar let op AVG.</li>
+                    </ul>
+                    <li class="font-bold text-[#003B73] text-xl mt-4">Visuele Dagplanningen en Tools:</li>
+                    <ul class="list-disc ml-6 space-y-1">
+                        <li>**Canva:** Voor het maken van visuele stappenplannen en agenda's.</li>
+                        <li>**Miro / Microsoft Whiteboard:** Interactieve whiteboards voor visuele samenwerking.</li>
+                        <li>**Google Documenten / Presentaties:** Eenvoudig documenten met picto's maken.</li>
+                    </ul>
+                    <li class="font-bold text-[#003B73] text-xl mt-4">Zelf E-health Content Creëren:</li>
+                    <ul class="list-disc ml-6 space-y-1">
+                        <li>**Canva:** Voor het ontwerpen van visuele modules en sociale verhalen.</li>
+                        <li>**Google Sites:** Eenvoudige website bouwen als kennisbank.</li>
+                        <li>**YouTube:** Voor het delen van zelfgemaakte instructievideo's.</li>
+                    </ul>
+                    <li class="font-bold text-[#003B73] text-xl mt-4">Slimme Hulpmiddelen:</li>
+                    <ul class="list-disc ml-6 space-y-1">
+                        <li>**Slimme Speakers (Google Nest/Amazon Echo):** Spraakgestuurde herinneringen.</li>
+                        <li>**Slimme Stekkers:** Voor het creëren van routines.</li>
+                        <li>**Slimme Wekkers:** Voor visuele herinneringen op de smartphone.</li>
+                    </ul>
+                </ul>
+                <div class="mt-6">
+                    <a href="https://docs.google.com/document/d/1mrgEdpDmu6ICHsl5aop62QroTLqm4tG0TuKBBKTfah4/edit?tab=t.0#heading=h.ajak75i4szm9" target="_blank" class="text-[#0074B7] font-bold hover:underline transition-colors">
+                        Bekijk het volledige document met de hulpmiddelen &#x2197;
+                    </a>
+                </div>
+            </section>
+            
+            <!-- Nieuwe sectie met de gedetailleerde handleiding -->
+            <section id="gedetailleerde-handleiding-hoofdstuk" class="bg-gray-100 rounded-lg shadow-inner p-6 md:p-8 space-y-12">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-[#003B73] mt-2">Gedetailleerde Handleiding</h2>
+                    <p class="mt-2 text-gray-600 max-w-2xl mx-auto">Een stap-voor-stap gids met alle details voor een succesvol digitaal consult.</p>
+                </div>
+                
+                <section id="handleiding-stap1" class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold text-[#0074B7] mb-4">Stap 1: De Voorbereiding</h3>
+                    <p class="text-gray-700 mb-4">Een goede voorbereiding zorgt voor een soepel consult. Check voor elk digitaal consult deze punten:</p>
+                    <div class="space-y-4">
+                        <h4 class="text-xl font-semibold text-[#003B73]">1. Techniek en Hulpmiddelen</h4>
+                        <ul class="list-none space-y-2 text-gray-600">
+                            <li>**Controleer je apparatuur:** Zorg dat je laptop of tablet volledig is opgeladen en dat de camera en microfoon werken.</li>
+                            <li>**Test je verbinding:** Doe een snelle internetcheck. Een stabiele verbinding voorkomt haperingen.</li>
+                            <li>**Open de juiste tool:** Start het beeldbelprogramma op tijd op en zorg dat je ingelogd bent.</li>
+                            <li>**Sluit onnodige programma's:** Dit maakt je computer sneller en voorkomt ongewenste meldingen.</li>
+                        </ul>
+    
+                        <h4 class="text-xl font-semibold text-[#003B73]">2. De Werkruimte</h4>
+                        <ul class="list-none space-y-2 text-gray-600">
+                            <li>**Privacy:** Kies een rustige, privékamer waar je niet gestoord wordt en waar niemand kan meeluisteren.</li>
+                            <li>**Achtergrond:** Zorg voor een neutrale achtergrond. Een opgeruimde ruimte oogt professioneel.</li>
+                            <li>**Belichting:** Zorg dat je gezicht goed verlicht is. Zit bij voorkeur met je gezicht naar een raam of lamp toe, niet met je rug ernaartoe.</li>
+                        </ul>
+                        
+                        <h4 class="text-xl font-semibold text-[#003B73]">3. De Cliënt voorbereiden</h4>
+                        <ul class="list-none space-y-2 text-gray-600">
+                            <li>**Informeren:** Zorg dat de cliënt op de hoogte is van het digitale consult en de gekozen tool.</li>
+                            <li>**Vraag vooraf:** Vraag of de cliënt weet hoe hij moet inloggen of de link moet openen.</li>
+                            <li>**Hulp aanbieden:** Bied aan om samen kort te oefenen als de cliënt hier behoefte aan heeft.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="handleiding-stap2" class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold text-[#0074B7] mb-4">Stap 2: Het Digitale Consult</h3>
+                    <p class="text-gray-700 mb-4">Nu is het tijd voor het gesprek. Goed contact is ook digitaal de basis.</p>
+                    <div class="space-y-4">
+                        <h4 class="text-xl font-semibold text-[#003B73]">1. De Start</h4>
+                        <ul class="list-none space-y-2 text-gray-600">
+                            <li>**Begroeting:** Begroet de cliënt vriendelijk en met een glimlach, net als bij een fysiek bezoek.</li>
+                            <li>**Check de verbinding:** Vraag of de cliënt je goed kan zien en horen. Los eventuele technische problemen direct op.</li>
+                            <li>**Kort de agenda door:** Bepaal samen wat jullie gaan bespreken. Dit geeft structuur aan het gesprek.</li>
+                        </ul>
+                        
+                        <h4 class="text-xl font-semibold text-[#003B73]">2. Tijdens het Gesprek</h4>
+                        <ul class="list-none space-y-2 text-gray-600">
+                            <li>**Kijk in de camera:** Kijk zoveel mogelijk in de camera, niet naar je eigen gezicht. Dit simuleert oogcontact.</li>
+                            <li>**Duidelijke communicatie:** Spreek rustig en articuleer duidelijk. Gebruik geen ingewikkelde woorden of vakjargon.</li>
+                            <li>**Non-verbale signalen:** Let extra op non-verbale signalen van de cliënt. Als je iets niet goed ziet of hoort, vraag dan door.</li>
+                            <li>**Pauzes:** Neem af en toe een bewuste pauze. Dit geeft de cliënt de tijd om na te denken en te reageren.</li>
+                        </ul>
+                        
+                        <h4 class="text-xl font-semibold text-[#003B73]">3. Afronding</h4>
+                        <ul class="list-none space-y-2 text-gray-600">
+                            <li>**Vat samen:** Herhaal de belangrijkste punten die zijn besproken.</li>
+                            <li>**Vervolgstappen:** Maak duidelijke afspraken over de volgende stappen of het volgende contactmoment (fysiek of digitaal).</li>
+                            <li>**Feedback vragen:** Vraag de cliënt kort naar hun ervaring. Bijvoorbeeld: "Hoe vond u dit digitale contact in vergelijking met een fysiek gesprek?"</li>
+                            <li>**Bedank de cliënt:** Sluit het gesprek vriendelijk af.</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section id="handleiding-stap3" class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold text-[#0074B7] mb-4">Stap 3: Na het Consult</h3>
+                    <p class="text-gray-700 mb-4">Ook na het consult zijn er belangrijke stappen te zetten.</p>
+                    <ul class="list-none space-y-2 text-gray-600">
+                        <li>**Documenteer:** Registreer het consult direct in het ECD. Vermeld duidelijk dat het een digitaal contactmoment betrof.</li>
+                        <li>**Evalueer voor jezelf:** Denk kort na over het gesprek. Wat ging er goed? Wat kan er beter? Schrijf deze reflectie eventueel op.</li>
+                        <li>**Deel je ervaring:** Vertel je collega’s van de pilotgroep over je ervaring. De successen en de uitdagingen, zodat we van elkaar kunnen leren.</li>
+                    </ul>
+                </section>
+            </section>
+        
+        </main>
+
+        <footer class="text-center mt-12 md:mt-16 pt-8 border-t border-gray-200">
+            <p class="text-gray-600">Makker | Prisma - Samen op weg naar innovatieve en cliëntgerichte zorg.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const brilliantBlues = {
+            darkBlue: '#003B73',
+            mediumBlue: '#0074B7',
+            lightBlue: '#60A3D9',
+            paleBlue: '#BFD7ED',
+            background: '#F0F0F0'
+        };
+
+        const tooltipPlugin = {
+            tooltip: {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                            return label.join(' ');
+                        } else {
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+        
+        function wrapLabel(str, maxWidth) {
+            if (str.length <= maxWidth) return str;
+            const words = str.split(' ');
+            let lines = [];
+            let currentLine = words[0];
+            for (let i = 1; i < words.length; i++) {
+                if ((currentLine + ' ' + words[i]).length > maxWidth) {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                } else {
+                    currentLine += ' ' + words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const progressCtx = document.getElementById('progressChart').getContext('2d');
+        new Chart(progressCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Huidig Aandeel Digitaal', 'Resterend tot Doel'],
+                datasets: [{
+                    label: 'Voortgang',
+                    data: [2.5, 22.5],
+                    backgroundColor: [brilliantBlues.mediumBlue, brilliantBlues.paleBlue],
+                    borderColor: ['#FFFFFF'],
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    title: {
+                        display: false
+                    },
+                    ...tooltipPlugin
+                }
+            }
+        });
+        
+        document.getElementById('generate-script-btn').addEventListener('click', async () => {
+            const input = document.getElementById('challenge-input').value;
+            const outputDiv = document.getElementById('script-output');
+            const loadingSpinner = document.getElementById('loading-spinner');
+
+            if (!input.trim()) {
+                outputDiv.innerText = 'Vul eerst een uitdaging in!';
+                return;
+            }
+
+            loadingSpinner.classList.remove('hidden');
+            outputDiv.innerText = '';
+            
+            // Verzoek wordt direct naar de Gemini API gestuurd
+            const apiKey = 'AIzaSyA0cxgFuiBPgNg1dAaOd6oObFyjUzfQzfw';
+            const chatHistory = [];
+            chatHistory.push({ role: "user", parts: [{ text: `Je bent een expert in communicatie in de zorg. Schrijf een kort, praktisch communicatiescript of advies voor een zorgverlener die een digitaal consult voert. Baseer het advies op de volgende uitdaging: "${input}". Geef een duidelijke, concrete tip of een voorbeeld van een dialoog. Begin direct met de tip of dialoog en gebruik geen inleiding.` }] });
+            const payload = { contents: chatHistory };
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    outputDiv.innerText = text;
+                } else {
+                    console.error('Unexpected API response structure:', result);
+                    outputDiv.innerText = 'Helaas kon ik geen antwoord genereren. Probeer het opnieuw.';
+                }
+            } catch (error) {
+                console.error('Error calling Gemini API:', error);
+                outputDiv.innerText = 'Er is een fout opgetreden. Controleer uw verbinding of de API-sleutel.';
+            } finally {
+                loadingSpinner.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

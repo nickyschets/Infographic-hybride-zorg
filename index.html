@@ -367,49 +367,42 @@
             }
         });
         
-        document.getElementById('generate-script-btn').addEventListener('click', async () => {
-            const input = document.getElementById('challenge-input').value;
-            const outputDiv = document.getElementById('script-output');
-            const loadingSpinner = document.getElementById('loading-spinner');
+document.getElementById('generate-script-btn').addEventListener('click', async () => {
+  const input = document.getElementById('challenge-input').value;
+  const outputDiv = document.getElementById('script-output');
+  const loadingSpinner = document.getElementById('loading-spinner');
 
-            if (!input.trim()) {
-                outputDiv.innerText = 'Vul eerst een uitdaging in!';
-                return;
-            }
+  if (!input.trim()) {
+    outputDiv.innerText = 'Vul eerst een uitdaging in!';
+    return;
+  }
 
-            loadingSpinner.classList.remove('hidden');
-            outputDiv.innerText = '';
-            
-            // Verzoek wordt direct naar de Gemini API gestuurd
-            const apiKey = 'AIzaSyA0cxgFuiBPgNg1dAaOd6oObFyjUzfQzfw';
-            const chatHistory = [];
-            chatHistory.push({ role: "user", parts: [{ text: `Je bent een expert in communicatie in de zorg. Schrijf een kort, praktisch communicatiescript of advies voor een zorgverlener die een digitaal consult voert. Baseer het advies op de volgende uitdaging: "${input}". Geef een duidelijke, concrete tip of een voorbeeld van een dialoog. Begin direct met de tip of dialoog en gebruik geen inleiding.` }] });
-            const payload = { contents: chatHistory };
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+  loadingSpinner.classList.remove('hidden');
+  outputDiv.innerText = '';
 
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                const result = await response.json();
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    const text = result.candidates[0].content.parts[0].text;
-                    outputDiv.innerText = text;
-                } else {
-                    console.error('Unexpected API response structure:', result);
-                    outputDiv.innerText = 'Helaas kon ik geen antwoord genereren. Probeer het opnieuw.';
-                }
-            } catch (error) {
-                console.error('Error calling Gemini API:', error);
-                outputDiv.innerText = 'Er is een fout opgetreden. Controleer uw verbinding of de API-sleutel.';
-            } finally {
-                loadingSpinner.classList.add('hidden');
-            }
-        });
+  try {
+    const response = await fetch('/api/gemini', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ input })
+    });
+
+    const result = await response.json();
+
+    if (response.ok && result.text) {
+      outputDiv.innerText = result.text;
+    } else if (result.raw) {
+      outputDiv.innerText = JSON.stringify(result.raw, null, 2);
+    } else {
+      outputDiv.innerText = result.error || 'Geen geldig antwoord ontvangen.';
+    }
+  } catch (err) {
+    console.error('Fetch error:', err);
+    outputDiv.innerText = 'Er is een fout opgetreden. Kijk in de console.';
+  } finally {
+    loadingSpinner.classList.add('hidden');
+  }
+});
     </script>
 </body>
 </html>

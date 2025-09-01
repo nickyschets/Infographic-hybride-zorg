@@ -294,122 +294,121 @@
         </footer>
 
     </div>
+<script>
+    // Jouw bestaande code voor de grafiek en de tooltip
+    const brilliantBlues = {
+        darkBlue: '#003B73',
+        mediumBlue: '#0074B7',
+        lightBlue: '#60A3D9',
+        paleBlue: '#BFD7ED',
+        background: '#F0F0F0'
+    };
 
-    <script>
-        const brilliantBlues = {
-            darkBlue: '#003B73',
-            mediumBlue: '#0074B7',
-            lightBlue: '#60A3D9',
-            paleBlue: '#BFD7ED',
-            background: '#F0F0F0'
-        };
-
-        const tooltipPlugin = {
-            tooltip: {
-                callbacks: {
-                    title: function(tooltipItems) {
-                        const item = tooltipItems[0];
-                        let label = item.chart.data.labels[item.dataIndex];
-                        if (Array.isArray(label)) {
-                            return label.join(' ');
-                        } else {
-                            return label;
-                        }
+    const tooltipPlugin = {
+        tooltip: {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
                     }
                 }
             }
-        };
-        
-        function wrapLabel(str, maxWidth) {
-            if (str.length <= maxWidth) return str;
-            const words = str.split(' ');
-            let lines = [];
-            let currentLine = words[0];
-            for (let i = 1; i < words.length; i++) {
-                if ((currentLine + ' ' + words[i]).length > maxWidth) {
-                    lines.push(currentLine);
-                    currentLine = words[i];
-                } else {
-                    currentLine += ' ' + words[i];
-                }
+        }
+    };
+    
+    function wrapLabel(str, maxWidth) {
+        if (str.length <= maxWidth) return str;
+        const words = str.split(' ');
+        let lines = [];
+        let currentLine = words[0];
+        for (let i = 1; i < words.length; i++) {
+            if ((currentLine + ' ' + words[i]).length > maxWidth) {
+                lines.push(currentLine);
+                currentLine = words[i];
+            } else {
+                currentLine += ' ' + words[i];
             }
-            lines.push(currentLine);
-            return lines;
+        }
+        lines.push(currentLine);
+        return lines;
+    }
+
+    const progressCtx = document.getElementById('progressChart').getContext('2d');
+    new Chart(progressCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Huidig Aandeel Digitaal', 'Resterend tot Doel'],
+            datasets: [{
+                label: 'Voortgang',
+                data: [2.5, 22.5],
+                backgroundColor: [brilliantBlues.mediumBlue, brilliantBlues.paleBlue],
+                borderColor: ['#FFFFFF'],
+                borderWidth: 4,
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '70%',
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+                title: {
+                    display: false
+                },
+                ...tooltipPlugin
+            }
+        }
+    });
+
+    // Nieuwe code voor de Gemini-chatfunctie die de Netlify-functie oproept
+    document.getElementById('generate-script-btn').addEventListener('click', async () => {
+        const input = document.getElementById('challenge-input').value;
+        const outputDiv = document.getElementById('script-output');
+        const loadingSpinner = document.getElementById('loading-spinner');
+
+        if (!input.trim()) {
+            outputDiv.innerText = 'Vul eerst een uitdaging in!';
+            return;
         }
 
-        const progressCtx = document.getElementById('progressChart').getContext('2d');
-        new Chart(progressCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Huidig Aandeel Digitaal', 'Resterend tot Doel'],
-                datasets: [{
-                    label: 'Voortgang',
-                    data: [2.5, 22.5],
-                    backgroundColor: [brilliantBlues.mediumBlue, brilliantBlues.paleBlue],
-                    borderColor: ['#FFFFFF'],
-                    borderWidth: 4,
-                    hoverOffset: 4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                cutout: '70%',
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                    },
-                    title: {
-                        display: false
-                    },
-                    ...tooltipPlugin
-                }
-            }
-        });
+        loadingSpinner.classList.remove('hidden');
+        outputDiv.innerText = '';
         
-        document.getElementById('generate-script-btn').addEventListener('click', async () => {
-            const input = document.getElementById('challenge-input').value;
-            const outputDiv = document.getElementById('script-output');
-            const loadingSpinner = document.getElementById('loading-spinner');
-
-            if (!input.trim()) {
-                outputDiv.innerText = 'Vul eerst een uitdaging in!';
-                return;
-            }
-
-            loadingSpinner.classList.remove('hidden');
-            outputDiv.innerText = '';
+        // De API-sleutel en de directe aanroep zijn verwijderd en vervangen door een oproep naar de Netlify-functie
+        const promptText = `Je bent een expert in communicatie in de zorg. Schrijf een kort, praktisch communicatiescript of advies voor een zorgverlener die een digitaal consult voert. Baseer het advies op de volgende uitdaging: "${input}". Geef een duidelijke, concrete tip of een voorbeeld van een dialoog. Begin direct met de tip of dialoog en gebruik geen inleiding.`;
+        
+        try {
+            const response = await fetch('/.netlify/functions/gemini', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt: promptText })
+            });
+            const result = await response.json();
             
-            // Verzoek wordt direct naar de Gemini API gestuurd
-            const apiKey = 'AIzaSyA0cxgFuiBPgNg1dAaOd6oObFyjUzfQzfw';
-            const chatHistory = [];
-            chatHistory.push({ role: "user", parts: [{ text: `Je bent een expert in communicatie in de zorg. Schrijf een kort, praktisch communicatiescript of advies voor een zorgverlener die een digitaal consult voert. Baseer het advies op de volgende uitdaging: "${input}". Geef een duidelijke, concrete tip of een voorbeeld van een dialoog. Begin direct met de tip of dialoog en gebruik geen inleiding.` }] });
-            const payload = { contents: chatHistory };
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                const result = await response.json();
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    const text = result.candidates[0].content.parts[0].text;
-                    outputDiv.innerText = text;
+            if (response.ok) {
+                if (result && result.text) {
+                    outputDiv.innerText = result.text;
                 } else {
                     console.error('Unexpected API response structure:', result);
                     outputDiv.innerText = 'Helaas kon ik geen antwoord genereren. Probeer het opnieuw.';
                 }
-            } catch (error) {
-                console.error('Error calling Gemini API:', error);
-                outputDiv.innerText = 'Er is een fout opgetreden. Controleer uw verbinding of de API-sleutel.';
-            } finally {
-                loadingSpinner.classList.add('hidden');
+            } else {
+                outputDiv.innerText = result.error || 'Er is een fout opgetreden. Controleer uw verbinding of de API-sleutel.';
             }
-        });
-    </script>
+        } catch (error) {
+            console.error('Error calling Netlify Function:', error);
+            outputDiv.innerText = 'Er is een fout opgetreden. Controleer uw verbinding of de API-sleutel.';
+        } finally {
+            loadingSpinner.classList.add('hidden');
+        }
+    });
+</script>
 </body>
 </html>
